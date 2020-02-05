@@ -54,11 +54,11 @@ CWorld *pWorld;
 //hits to disk by recording x-displacement, y-displacement, wind speed and the angle
 //that was successful) or actually playing a proper game. In that former case, the player
 //gets no turn and the neural network AI is disabled.
-BOOL boGeneratingTrainingData=TRUE;
+BOOL boGeneratingTrainingData=FALSE;
 
 //When true, tells the game to load an already trained neural network for use in game. When 
 //false causes the game to create a new network and train it.
-BOOL boLoadTrainedNetwork=TRUE;
+BOOL boLoadTrainedNetwork=FALSE;
 
 //Information used to scale the inputs to the neural network (see below)
 double *pdMin;
