@@ -58,7 +58,7 @@ BOOL boGeneratingTrainingData=FALSE;
 
 //When true, tells the game to load an already trained neural network for use in game. When 
 //false causes the game to create a new network and train it.
-BOOL boLoadTrainedNetwork=FALSE;
+BOOL boLoadTrainedNetwork=TRUE;
 
 //Information used to scale the inputs to the neural network (see below)
 double *pdMin;

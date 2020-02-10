@@ -187,9 +187,7 @@ double CMLP::dTrainingStep(
 	{
 		for(j=0;j<ulNumberOfInputs+1;j++)
 		{
-			float random = ((float)rand()) / (float)2;
-			random -= 1;
-			ppdwih[i][j]+= dStepSize * random;
+			ppdwih[i][j]+= dStepSize * (double(rand()) / double(RAND_MAX) - 0.5)*2.0;
 		}
 	}
 	//And for the hidden to output layer weights
@@ -197,9 +195,7 @@ double CMLP::dTrainingStep(
 	{
 		for(j=0;j<ulNumberOfHiddenNodes+1;j++)
 		{
-			float random = ((float)rand()) / (float)2;
-			random -= 1;
-			ppdwho[i][j]+=dStepSize * random;
+			ppdwho[i][j]+= dStepSize * (double(rand()) / double(RAND_MAX) - 0.5)*2.0;
 		}
 	}
 
@@ -370,7 +366,7 @@ double CMLP::dGetPerformance(
 			//Compute the squared error between the output produced by the network
 			//(the barrel angle it estimated as being correct) and the target output
 			//contained in the sample (the barrel angle that actually scored the hit)
-			dError+= 0.5 * (ppdTargets[i][j] - pdOutputs[j]) * (ppdTargets[i][j] - pdOutputs[j]);
+			dError+= 0.5*pow(fabs(ppdTargets[i][j] - pdOutputs[j]), 2.0);
 			//Again, multiple outputs are supported, but only one is used in this
 			//application. Occasionally, different error measures are employed. Using a number
 			//greater than 2.0 in the above equation tends to result in much less variation
