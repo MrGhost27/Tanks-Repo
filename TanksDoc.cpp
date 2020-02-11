@@ -58,7 +58,7 @@ BOOL boGeneratingTrainingData=FALSE;
 
 //When true, tells the game to load an already trained neural network for use in game. When 
 //false causes the game to create a new network and train it.
-BOOL boLoadTrainedNetwork=TRUE;
+BOOL boLoadTrainedNetwork=FALSE;
 
 //Information used to scale the inputs to the neural network (see below)
 double *pdMin;
@@ -222,8 +222,17 @@ CTanksDoc::CTanksDoc()
 			for(j=0;j<ulNumberOfInputs;j++)
 			{
 				
+				///Inputs range between min and max
+				ppdTrainingInputs[i][j] -= pdMin[j];
+				//Inputs range between 0 and max-min
+				ppdTrainingInputs[i][j] /= (pdMax[j] - pdMin[j]);
+				//Inputs range between 0 and 1
+				ppdTrainingInputs[i][j] -= 0.5;
+				//Inputs range between -0.5 and +0.5
+				ppdTrainingInputs[i][j] *= 2.0;
 				//Inputs range between -1.0 and +1.0
-				//ppdTrainingInputs[i][j]=?????????????????????????
+
+
 				TRACE("you should scale the input in the range -1 to 1. see slide 3. once done, remove this line");
 			}
 		}
