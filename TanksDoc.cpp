@@ -44,7 +44,7 @@ unsigned long ulNumberOfOutputs=1;
 //player's tank around 98% of the time (without the random noise added to its output - i.e. with 
 //dErrorBias and dErrorVariance set to zero). The value of termination error will have to be changed
 //for different types of error measure (see CMLP::dGetPerformance).
-double dTerminationError=0.000025;
+double dTerminationError=0.00005;
 
 //Pointers to the neural network and the game world
 CMLP *pMLP;
